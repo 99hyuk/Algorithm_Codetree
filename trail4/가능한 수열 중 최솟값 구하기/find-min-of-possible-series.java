@@ -17,31 +17,7 @@ public class Main {
     static void dfs(int idx) {
         if(finish) return;
 
-        if (idx >= 6) {
-            boolean check = true;
-            for (int i=0; i<3; i++) {
-                if (arr[idx-6+i] != arr[idx-3+i]) {
-                    check = false;
-                }
-            }
-
-            if(check) return;
-        } 
-        
-        if (idx >= 4) {
-            boolean check = true;
-            for (int i=0; i<2; i++) {
-                if (arr[idx-4+i] != arr[idx-2+i]) {
-                    check = false;
-                }
-            }
-
-            if(check) return;
-        }
-
-        if (idx >= 2) {
-           if (arr[idx-2] == arr[idx-1]) return;
-        }
+        if(condition(idx)) return;
 
         if (idx == n) {
             for (int n : arr) {
@@ -59,31 +35,17 @@ public class Main {
         dfs(idx+1);
     }
 
-    static boolean check(int idx) {
-        if (idx >= 6) {
+    static boolean condition(int idx) {
+        for (int i=2; i<=idx; i+=2) {
             boolean check = true;
-            for (int i=0; i<3; i++) {
-                if (arr[idx-6+i] != arr[idx-3+i]) {
+            for (int j=0; j<i/2; j++) {
+                if (arr[idx-i+j] != arr[idx-i/2+j]) {
                     check = false;
                 }
             }
-
-            if(check) return;
-        } 
-        
-        if (idx >= 4) {
-            boolean check = true;
-            for (int i=0; i<2; i++) {
-                if (arr[idx-4+i] != arr[idx-2+i]) {
-                    check = false;
-                }
-            }
-
-            if(check) return;
+            if(check) return true;
         }
 
-        if (idx >= 2) {
-           if (arr[idx-2] == arr[idx-1]) return;
-        }
+        return false;
     }
 }
