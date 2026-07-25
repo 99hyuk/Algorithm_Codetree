@@ -1,4 +1,6 @@
-select Year(e.DIFFERENTIATION_DATE) as YEAR, d.mm - e.SIZE_OF_COLONY as YEAR_DEV, ID
-from ecoli_data e join (select YEAR(DIFFERENTIATION_DATE) as YEAR, max(size_of_colony) as mm from ecoli_data group by YEAR(DIFFERENTIATION_DATE)) d
-on Year(e.DIFFERENTIATION_DATE) = d.YEAR
+-- 코드를 작성해주세요
+select year(DIFFERENTIATION_DATE) as YEAR, (m - SIZE_OF_COLONY) as YEAR_DEV, ID
+from ECOLI_DATA a 
+join (select year(DIFFERENTIATION_DATE) as y, max(SIZE_OF_COLONY) as m from ECOLI_DATA group by year(DIFFERENTIATION_DATE)) b 
+on year(a.DIFFERENTIATION_DATE) = y
 order by YEAR ASC, YEAR_DEV ASC;
