@@ -4,7 +4,6 @@ class Solution {
     
     int count = 0;
     int ans = 0;
-    Set<String> set = new HashSet<>();
     
     public int solution(String word) {
         
@@ -15,8 +14,7 @@ class Solution {
     
     public void dfs(int idx, String result, String word) {
         
-        if (!set.contains(result) && !result.equals("")) {
-            set.add(result);
+        if (!result.equals("")) {
             count++;
         }
         
